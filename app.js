@@ -20,6 +20,13 @@ function generate(minCust, maxCust, average, array, sectionEl){
     createElement('li', 'class', 'cookie-sales', text, sectionEl);
   }
   console.log(array);
+  var sum = 0;
+  for (var j = 0; j < array.length; j++){
+    sum += array[j];
+    console.log('sum is ' + sum);
+  }
+  var sumText = 'Total: ' + sum + ' cookies!';
+  createElement('li', 'class', 'cookie-sales', sumText, sectionEl);
 }
 
 var firstAndPike = {
