@@ -1,0 +1,10 @@
+* {
+  background-color: gray;
+}
+section {
+  border: 1px solid;
+  max-width: 275px;
+  margin: 5px;
+  width: 275px;
+  float: left;
+}
