@@ -1,5 +1,10 @@
+* {
+  background-color: gray;
+}
 section {
-  display: inline;
   border: 1px solid;
-  color: red;
+  max-width: 275px;
+  margin: 5px;
+  width: 275px;
+  float: left;
 }
