@@ -21,7 +21,7 @@ ul{
   font-size: 11px;
   font-weight: normal;
 }
-table, tr, td{
+table, tr, td, th{
   border: 1px solid;
 }
 /*
