@@ -9,7 +9,7 @@ function createElement(tagType, tagIdentifier, tagIdentifiername, elementContent
   //this element creation function created by Benjamin Ayzenberg.
 }
 
-function generate(minCust, maxCust, average, array, sectionEl, total){
+CookieStore.prototype.generate = function (minCust, maxCust, average, array, sectionEl, total){
   var i = 6;
   for (i = 6; i < 21; i++){
     if (i >= 6 && i < 11 ){
@@ -23,57 +23,32 @@ function generate(minCust, maxCust, average, array, sectionEl, total){
     var cookies = Math.floor(number * average);
     array.push(cookies);
     total += cookies;
-    var text = i + ':00: ' + cookies + ' cookies were sold.';
-    console.log('At ' + i + ':00, ' + number + ' customers visited, buying a total of ' + cookies + ' cookies!');
+    // var text = i + ':00: ' + cookies + ' cookies were sold.';
+    var text = ('At ' + i + ':00, ' + number + ' customers visited, buying a total of ' + cookies + ' cookies!');
     createElement('li', 'class', 'cookie-sales', text, sectionEl);
   }
   console.log(array);
   var sumText = 'Total: ' + total + ' cookies!';
-  createElement('li', 'class', 'cookie-sales', sumText, sectionEl);
+  createElement('li', 'class', 'total-sales', sumText, sectionEl);
+};
+
+function CookieStore(minCust, maxCust, average, sectionEl){
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.average = average;
+  this.array = [];
+  this.total = 0;
+  this.sectionEl = sectionEl;
 }
 
-var firstAndPike = {
-  minCust: 23,
-  maxCust: 65,
-  average: 6.3,
-  array: [],
-  total: 0,
-  sectionEl: document.getElementById('firstAndPike'),
-};
-var seaTac = {
-  minCust: 3,
-  maxCust: 24,
-  average: 1.2,
-  array: [],
-  total: 0,
-  sectionEl: document.getElementById('seaTac'),
-};
-var seattleCenter = {
-  minCust: 11,
-  maxCust: 38,
-  average: 3.7,
-  array: [],
-  total: 0,
-  sectionEl: document.getElementById('seattleCenter'),
-};
-var capHill = {
-  minCust: 20,
-  maxCust: 38,
-  average: 2.3,
-  array: [],
-  total: 0,
-  sectionEl: document.getElementById('capHill'),
-};
-var alki = {
-  minCust: 2,
-  maxCust: 16,
-  average: 4.6,
-  array: [],
-  total: 0,
-  sectionEl: document.getElementById('alki'),
-};
-generate(firstAndPike.minCust, firstAndPike.maxCust, firstAndPike.average, firstAndPike.array, firstAndPike.sectionEl, firstAndPike.total);
-generate(seaTac.minCust, seaTac.maxCust, seaTac.average, seaTac.array, seaTac.sectionEl, seaTac.total);
-generate(seattleCenter.minCust, seattleCenter.maxCust, seattleCenter.average, seattleCenter.array, seattleCenter.sectionEl, seattleCenter.total);
-generate(capHill.minCust, capHill.maxCust, capHill.average, capHill.array, capHill.sectionEl, capHill.total);
-generate(alki.minCust, alki.maxCust, alki.average, alki.array, alki.sectionEl, alki.total);
+var firstAndPike = new CookieStore(23, 65, 6.3, document.getElementById('firstAndPike'));
+var seaTac = new CookieStore(3, 24, 1.2, document.getElementById('seaTac'));
+var seattleCenter = new CookieStore(11, 38, 3.7, document.getElementById('seattleCenter'));
+var capHill = new CookieStore(20, 38, 2.3, document.getElementById('capHill'));
+var alki = new CookieStore(2, 16, 4.6, document.getElementById('alki'));
+
+firstAndPike.generate(firstAndPike.minCust, firstAndPike.maxCust, firstAndPike.average, firstAndPike.array, firstAndPike.sectionEl, firstAndPike.total);
+seaTac.generate(seaTac.minCust, seaTac.maxCust, seaTac.average, seaTac.array, seaTac.sectionEl, seaTac.total);
+seattleCenter.generate(seattleCenter.minCust, seattleCenter.maxCust, seattleCenter.average, seattleCenter.array, seattleCenter.sectionEl, seattleCenter.total);
+capHill.generate(capHill.minCust, capHill.maxCust, capHill.average, capHill.array, capHill.sectionEl, capHill.total);
+alki.generate(alki.minCust, alki.maxCust, alki.average, alki.array, alki.sectionEl, alki.total);
