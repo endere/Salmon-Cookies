@@ -17,10 +17,15 @@ ul{
 }
 .cookie-sales{
   margin: 5px;
-  visibility: hidden;
+/*visibility: hidden;*/
   font-size: 11px;
   font-weight: normal;
 }
+table, tr, td{
+  border: 1px solid;
+}
+/*
 ul:hover .cookie-sales{
   visibility: visible;
 }
+*/

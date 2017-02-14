@@ -24,12 +24,10 @@ CookieStore.prototype.generate = function (minCust, maxCust, average, array, sec
     array.push(cookies);
     total += cookies;
     // var text = i + ':00: ' + cookies + ' cookies were sold.';
-    var text = ('At ' + i + ':00, ' + number + ' customers visited, buying a total of ' + cookies + ' cookies!');
-    createElement('li', 'class', 'cookie-sales', text, sectionEl);
+    createElement('td', 'class', 'cookie-sales', cookies, sectionEl);
   }
   console.log(array);
-  var sumText = 'Total: ' + total + ' cookies!';
-  createElement('li', 'class', 'total-sales', sumText, sectionEl);
+  createElement('td', 'class', 'total-sales', total, sectionEl);
 };
 
 function CookieStore(minCust, maxCust, average, sectionEl){
@@ -40,6 +38,7 @@ function CookieStore(minCust, maxCust, average, sectionEl){
   this.total = 0;
   this.sectionEl = sectionEl;
 }
+
 
 var firstAndPike = new CookieStore(23, 65, 6.3, document.getElementById('firstAndPike'));
 var seaTac = new CookieStore(3, 24, 1.2, document.getElementById('seaTac'));
