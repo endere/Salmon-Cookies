@@ -6,21 +6,42 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <img src='salmon.png'/>
+    <img src='salmon (1).png'/>
     <ul>
-      <li>Home</li>
-      <li>Contact</li>
-      <li>Menu</li>
-      <li>About us</li>
+      <li id="home" class ="menubutton">Home</li>
+      <li id ="contact" class="menubutton">Contact</li>
+      <li id="menu" class="menubutton">Menu</li>
+      <li id="aboutus" class="menubutton">About us</li>
+      <div class="form">
+        <form id="new-store-form">
+          <fieldset>
+            <legend>Enter New Cookie Store Info</legend>
+            <label for="cookieStoreName">Cookie Store Name:</label>
+            <input type="text" name="cookieStoreName">
+
+            <label for="minCust">Minimum Customers/Hour:</label>
+            <input type="text" name="minCust" value="">
+
+            <label for="maxCust">Maximum Customers/Hour:</label>
+            <input type="text" name="maxCust" value="">
+
+            <label for="average">Average Cookies Bought:</label>
+            <input type="text" name="average" value="">
+
+            <label for="tag">Store Tag:</label>
+            <input type="text" name="tag" value="">
+
+            <button type="submit" name="submit">Submit</button>
+          </fieldset>
+        </form>
+      </div>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tortor turpis, mattis sed iaculis eget, tincidunt vitae neque. Nunc non neque dapibus, molestie odio ac, luctus libero. Sed mollis placerat porta. Aliquam vulputate neque ut libero fringilla imperdiet. Donec dapibus dui massa, ac mattis nulla sagittis ut. Quisque vehicula porttitor felis, eget mattis nulla pharetra nec. Etiam vestibulum tristique ultricies.
 
 Aliquam erat volutpat. Nullam cursus venenatis turpis, vel auctor purus sodales a. Fusce egestas mattis bibendum. Maecenas leo mi, viverra vel mattis laoreet, placerat a leo. Maecenas interdum nisi in ex aliquet, a tempor est accumsan. In nec massa nisi. Fusce semper in lorem vitae sodales. Phasellus tincidunt mattis nisl, eu congue nisi dictum sed.
 
 Nulla dolor augue, volutpat quis sem id, convallis elementum orci. Mauris non tortor porttitor, hendrerit purus a, fringilla dolor. Morbi gravida, enim feugiat sodales maximus, lorem eros varius massa, quis tincidunt dolor elit vitae diam. Praesent sit amet massa quis diam rutrum placerat a nec nulla. Integer sodales tellus tortor, vitae imperdiet enim ornare in. In dui sem, feugiat ut rhoncus fermentum, suscipit vel sapien. Nulla congue tristique convallis. Aliquam non orci a orci euismod faucibus. Duis eleifend nibh tellus, non placerat lorem pretium ut. Integer rutrum ut ex sit amet lobortis. Quisque pulvinar vestibulum arcu at dapibus.
-
-Maecenas venenatis faucibus justo, a venenatis orci ultrices sit amet. Vivamus auctor pulvinar orci, a consectetur diam bibendum vitae. Nam imperdiet tincidunt ullamcorper. Phasellus vitae volutpat tellus. Aenean a tellus a massa gravida laoreet. In hac habitasse platea dictumst. Nunc et nibh massa. Proin leo ligula, iaculis eu ante id, blandit pulvinar velit. Ut nunc nibh, ultricies a metus eu, gravida varius dui. Sed congue ante nec dolor auctor elementum. Suspendisse eget nibh diam.
-
-Sed tristique ullamcorper augue eu scelerisque. Nullam tincidunt est in scelerisque varius. In non felis a tellus pharetra aliquam ac non lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc laoreet nulla odio, ac semper sem euismod ac. In placerat iaculis vulputate. Vestibulum eu faucibus dolor, sit amet fringilla odio. Nunc vel libero dictum, lobortis nibh nec, consequat purus. Nam ornare commodo sagittis. Fusce id urna cursus, congue massa at, imperdiet lacus. Praesent dui tellus, posuere eu tincidunt vulputate, venenatis sed lectus. Mauris ac luctus lacus.</p>
+</p>
+    <script src= "app.js" type="text/javascript"></script>
     </ul>
   </body>
 </html>
