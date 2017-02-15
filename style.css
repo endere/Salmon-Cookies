@@ -12,13 +12,23 @@ section {
 .total-sales{
   font-weight: bold;
 }
-ul{
-  font-weight: bold;
-}
 .cookie-sales{
   margin: 5px;
   font-weight: normal;
 }
 table, tr, td, th{
   border: 1px solid;
+}
+ul{
+  text-align: center;
+  list-style-type: none;
+  margin: 10px;
+}
+li{
+  display: inline;
+  font-size: 50px;
+  margin-left:40px;
+}
+img{
+  margin-left: 100px;
 }
