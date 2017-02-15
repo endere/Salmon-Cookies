@@ -26,15 +26,31 @@ function createElement(tagType, tagIdentifier, tagIdentifiername, elementContent
   //this element creation function created by Benjamin Ayzenberg.
 }
 
+function createData() {
+  for (var i = 0; i < stores.length; i++) {
+    var currentStore = stores[i];
+    currentStore.generate(currentStore.minCust, currentStore.maxCust, currentStore.average, currentStore.array, document.getElementById(currentStore.tag), currentStore.total, currentStore.name);
+  }
+}
+
+function makeTable(stores, times, currentTable, newHead){
+  for(var j = 0; j < times.length; j++){
+    createElement('th', 'class', 'time', times[j], newHead);
+  }
+  for (var i = 0; i < stores.length; i++){
+    var currentStore = stores[i];
+    var rowEl = createElement('tr', 'id', currentStore.tag, '', currentTable);
+  }
+}
+
 CookieStore.prototype.generate = function (minCust, maxCust, average, array, sectionEl, total, name){
-  var i = 6;
   createElement('td', 'class', 'name', name, sectionEl);
-  for (i = 6; i < 21; i++){
-    if (i >= 6 && i < 11 ){
+  for (var i = 0; i < times.length - 2; i++){
+    if (i >= 0 && i < 5 ){
       var number = Math.floor((Math.random() * ((maxCust - minCust) + 1) * .5) + minCust);
-    } else if(i >= 11 && i < 15 ){
+    } else if(i >= 5 && i < 11 ){
       var number = Math.floor((Math.random() * ((maxCust - minCust) + 1) * 1.5) + minCust);
-    } else if(i >= 15 && i < 21 ){
+    } else if(i >= 11 && i < 17 ){
       var number = Math.floor((Math.random() * ((maxCust - minCust) + 1) * 1) + minCust);
     }
     //random number credit from https://www.codecademy.com/en/forum_questions/5198adbdbbeddf9726000700
@@ -56,41 +72,33 @@ function CookieStore(minCust, maxCust, average, name, tag){
   this.tag = tag;
 }
 
-function makeTable(stores, times){
-  for(var j = 0; j < times.length; j++){
-    createElement('th', 'class', 'time', times[j], head);
-  }
-  for (var i = 0; i < stores.length; i++){
-    var currentStore = stores[i];
-    var rowEl = createElement('tr', 'id', currentStore.tag, '', tableEl);
-  }
-}
+function renderToPage(table, newHead, newFoot) {
+  makeTable(stores, times, table, newHead);
+  document.body.appendChild(table);
 
-makeTable(stores, times);
-document.body.appendChild(tableEl);
-firstAndPike.generate(firstAndPike.minCust, firstAndPike.maxCust, firstAndPike.average, firstAndPike.array, document.getElementById(firstAndPike.tag), firstAndPike.total, firstAndPike.name);
-seaTac.generate(seaTac.minCust, seaTac.maxCust, seaTac.average, seaTac.array, document.getElementById(seaTac.tag), seaTac.total, seaTac.name);
-seattleCenter.generate(seattleCenter.minCust, seattleCenter.maxCust, seattleCenter.average, seattleCenter.array, document.getElementById(seattleCenter.tag), seattleCenter.total, seattleCenter.name);
-capHill.generate(capHill.minCust, capHill.maxCust, capHill.average, capHill.array, document.getElementById(capHill.tag), capHill.total, capHill.name);
-alki.generate(alki.minCust, alki.maxCust, alki.average, alki.array, document.getElementById(alki.tag), alki.total, alki.name);
+  createData();
 
-createElement('td', 'class', 'footer', 'Total', foot);
-for (var j = 0; j < times.length; j++){
-  if (j < 15){
-    var sum = 0;
-    for(var i = 0; i < stores.length; i++){
-      var currentStore = stores[i];
-      console.log(currentStore.array[j]);
-      sum += currentStore.array[j];
+  createElement('td', 'class', 'footer', 'Total', newFoot);
+  for (var j = 0; j < times.length; j++){
+    if (j < 15){
+      var sum = 0;
+      for(var i = 0; i < stores.length; i++){
+        var currentStore = stores[i];
+        console.log(currentStore.array[j]);
+        sum += currentStore.array[j];
+      }
+      createElement('td', 'class', 'footer', sum, newFoot);
+      finalSum += sum;
+      console.log('finalsum is ' + finalSum);
     }
-    createElement('td', 'class', 'footer', sum, foot);
-    finalSum += sum;
-    console.log('finalsum is ' + finalSum);
-  }
-  else if (j === 15){
-    createElement('td', 'class', 'total-sales', finalSum, foot);
+    else if (j === 15){
+      createElement('td', 'class', 'total-sales', finalSum, newFoot);
+      finalSum = 0;
+    }
   }
 }
+
+renderToPage(tableEl, head, foot);
 
 console.log('-----------------Event Listeners-----------------');
 
@@ -116,9 +124,23 @@ function handleSubmit(event){
   var newStore = new CookieStore(minCust, maxCust, average, newStoreName, tag);
   console.log(newStore);
 
+  stores.push(newStore);
+
+  var oldTable = document.getElementById('tableEl');
+  console.log(oldTable);
+  oldTable.parentNode.removeChild(oldTable);
+  console.log(oldTable);
+
+  var newTableEl = document.createElement('table');
+  newTableEl.setAttribute('id', 'tableEl');
+  var newHead = document.createElement('thead');
+  newTableEl.appendChild(newHead);
+  var newFoot = document.createElement('tfoot');
+  newTableEl.appendChild(newFoot);
+  head.setAttribute('id', 'head');
+
+  renderToPage(newTableEl, newHead, newFoot);
 }
 
 //To do:
-// turn the mess of generate functions into a single function with a for loop.
-// put everything that creates a table into a single function that I can call with the submit button.
 // add the newstore to the stores array. Then, when the table function runs, it should automatically add the new store.
