@@ -7,6 +7,7 @@ var capHill = new CookieStore(20, 38, 2.3, 'Capital Hill', 'capHill');
 var alki = new CookieStore(2, 16, 4.6, 'Alki', 'alki');
 
 var stores = [firstAndPike, seaTac, seattleCenter, capHill, alki];
+var tagArray = [];
 var tableEl = document.createElement('table');
 tableEl.setAttribute('id', 'tableEl');
 var head = document.createElement('thead');
@@ -70,6 +71,7 @@ function CookieStore(minCust, maxCust, average, name, tag){
   this.total = 0;
   this.name = name;
   this.tag = tag;
+  tagArray += tag;
 }
 
 function renderToPage(table, newHead, newFoot) {
@@ -108,39 +110,43 @@ storeFormEl.addEventListener('submit', handleSubmit);
 function handleSubmit(event){
   event.preventDefault();
   event.stopPropagation();
-  console.log(event.target.cookieStoreName.value);
-  console.log(event.target.minCust.value);
-  console.log(event.target.maxCust.value);
-  console.log(event.target.average.value);
-  console.log(event.target.tag.value);
-  console.log('User pressed submit button on form.');
 
-  var newStoreName = event.target.cookieStoreName.value;
-  var minCust = parseInt(event.target.minCust.value);
-  var maxCust = parseInt(event.target.maxCust.value);
-  var average = parseInt(event.target.average.value);
-  var tag = event.target.tag.value;
+  if (tagArray.includes(event.target.tag.value) || stores.includes(event.target.cookieStoreName.value)) {
+    alert('Store name and/or tag is taken. Choose a new one, please.');
+  } else {
+    console.log(event.target.cookieStoreName.value);
+    console.log(event.target.minCust.value);
+    console.log(event.target.maxCust.value);
+    console.log(event.target.average.value);
+    console.log(event.target.tag.value);
+    console.log('User pressed submit button on form.');
 
-  var newStore = new CookieStore(minCust, maxCust, average, newStoreName, tag);
-  console.log(newStore);
+    var newStoreName = event.target.cookieStoreName.value;
+    var minCust = parseInt(event.target.minCust.value);
+    var maxCust = parseInt(event.target.maxCust.value);
+    var average = parseInt(event.target.average.value);
+    var tag = event.target.tag.value;
 
-  stores.push(newStore);
+    var newStore = new CookieStore(minCust, maxCust, average, newStoreName, tag);
+    console.log(newStore);
 
-  var oldTable = document.getElementById('tableEl');
-  console.log(oldTable);
-  oldTable.parentNode.removeChild(oldTable);
-  console.log(oldTable);
+    stores.push(newStore);
 
-  var newTableEl = document.createElement('table');
-  newTableEl.setAttribute('id', 'tableEl');
-  var newHead = document.createElement('thead');
-  newTableEl.appendChild(newHead);
-  var newFoot = document.createElement('tfoot');
-  newTableEl.appendChild(newFoot);
-  head.setAttribute('id', 'head');
+    var oldTable = document.getElementById('tableEl');
+    console.log(oldTable);
+    oldTable.parentNode.removeChild(oldTable);
+    console.log(oldTable);
 
-  renderToPage(newTableEl, newHead, newFoot);
+    var newTableEl = document.createElement('table');
+    newTableEl.setAttribute('id', 'tableEl');
+    var newHead = document.createElement('thead');
+    newTableEl.appendChild(newHead);
+    var newFoot = document.createElement('tfoot');
+    newTableEl.appendChild(newFoot);
+    head.setAttribute('id', 'head');
+
+    renderToPage(newTableEl, newHead, newFoot);
+  }
 }
-
 //To do:
 // add the newstore to the stores array. Then, when the table function runs, it should automatically add the new store.
