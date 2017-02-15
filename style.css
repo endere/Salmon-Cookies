@@ -1,5 +1,6 @@
 * {
   background-color: gray;
+  font-size: 20px;
 }
 section {
   border: 1px solid;
@@ -12,20 +13,12 @@ section {
   font-weight: bold;
 }
 ul{
-  font-size: 15px;
   font-weight: bold;
 }
 .cookie-sales{
   margin: 5px;
-/*visibility: hidden;*/
-  font-size: 11px;
   font-weight: normal;
 }
 table, tr, td, th{
   border: 1px solid;
 }
-/*
-ul:hover .cookie-sales{
-  visibility: visible;
-}
-*/
