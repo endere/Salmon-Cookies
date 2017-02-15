@@ -24,11 +24,42 @@ ul{
   list-style-type: none;
   margin: 10px;
 }
-li{
+.menubutton{
   display: inline;
   font-size: 50px;
   margin-left:40px;
+  box-shadow: 10px 10px 20px #000000;
+  margin-bottom: 50px;
+}
+.menubutton:hover{
+  background-color: lightgray;
 }
 img{
   margin-left: 100px;
+}
+div{
+  margin: 50px;
+  display: inline;
+}
+form{
+  text-align: left;
+  background-color: lightgrtay
+}
+legend{
+  border: 1px solid;
+  background: lightgray;
+  border-radius: 25px;
+}
+fieldset{
+  width: 250px;
+  background-color: lightgray;
+}
+input{
+  display: block;
+}
+label, input, button{
+  background-color: lightgray;
+}
+.cookie-sales:hover{
+  background-color: blue;
 }

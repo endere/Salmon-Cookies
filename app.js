@@ -91,3 +91,34 @@ for (var j = 0; j < times.length; j++){
     createElement('td', 'class', 'total-sales', finalSum, foot);
   }
 }
+
+console.log('-----------------Event Listeners-----------------');
+
+var storeFormEl = document.getElementById('new-store-form');
+storeFormEl.addEventListener('submit', handleSubmit);
+
+function handleSubmit(event){
+  event.preventDefault();
+  event.stopPropagation();
+  console.log(event.target.cookieStoreName.value);
+  console.log(event.target.minCust.value);
+  console.log(event.target.maxCust.value);
+  console.log(event.target.average.value);
+  console.log(event.target.tag.value);
+  console.log('User pressed submit button on form.');
+
+  var newStoreName = event.target.cookieStoreName.value;
+  var minCust = parseInt(event.target.minCust.value);
+  var maxCust = parseInt(event.target.maxCust.value);
+  var average = parseInt(event.target.average.value);
+  var tag = event.target.tag.value;
+
+  var newStore = new CookieStore(minCust, maxCust, average, newStoreName, tag);
+  console.log(newStore);
+
+}
+
+//To do:
+// turn the mess of generate functions into a single function with a for loop.
+// put everything that creates a table into a single function that I can call with the submit button.
+// add the newstore to the stores array. Then, when the table function runs, it should automatically add the new store.
