@@ -1,4 +1,6 @@
 'use strict';
+var tagArray = [];
+var storeNames = [];
 
 var firstAndPike = new CookieStore(23, 65, 6.3, 'First and Pike', 'firstAndPike');
 var seaTac = new CookieStore(3, 24, 1.2, 'Sea Tac', 'seaTac');
@@ -7,7 +9,6 @@ var capHill = new CookieStore(20, 38, 2.3, 'Capital Hill', 'capHill');
 var alki = new CookieStore(2, 16, 4.6, 'Alki', 'alki');
 
 var stores = [firstAndPike, seaTac, seattleCenter, capHill, alki];
-var tagArray = [];
 var tableEl = document.createElement('table');
 tableEl.setAttribute('id', 'tableEl');
 var head = document.createElement('thead');
@@ -71,7 +72,8 @@ function CookieStore(minCust, maxCust, average, name, tag){
   this.total = 0;
   this.name = name;
   this.tag = tag;
-  tagArray += tag;
+  tagArray.push(tag);
+  storeNames.push(name);
 }
 
 function renderToPage(table, newHead, newFoot) {
@@ -111,7 +113,7 @@ function handleSubmit(event){
   event.preventDefault();
   event.stopPropagation();
 
-  if (tagArray.includes(event.target.tag.value) || stores.includes(event.target.cookieStoreName.value)) {
+  if (tagArray.includes(event.target.tag.value) || storeNames.includes(event.target.cookieStoreName.value)) {
     alert('Store name and/or tag is taken. Choose a new one, please.');
   } else {
     console.log(event.target.cookieStoreName.value);
@@ -146,6 +148,7 @@ function handleSubmit(event){
     head.setAttribute('id', 'head');
 
     renderToPage(newTableEl, newHead, newFoot);
+    console.log(storeNames);
   }
 }
 //To do:

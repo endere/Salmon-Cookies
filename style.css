@@ -63,3 +63,6 @@ label, input, button{
 .cookie-sales:hover{
   background-color: blue;
 }
+button{
+  margin-top: 5px;
+}
