@@ -48,13 +48,8 @@ function makeTable(stores, times, currentTable, newHead){
 CookieStore.prototype.generate = function (minCust, maxCust, average, array, sectionEl, total, name){
   createElement('td', 'class', 'name', name, sectionEl);
   for (var i = 0; i < times.length - 2; i++){
-    if (i >= 0 && i < 5 ){
-      var number = Math.floor((Math.random() * ((maxCust - minCust) + 1) * .5) + minCust);
-    } else if(i >= 5 && i < 11 ){
-      var number = Math.floor((Math.random() * ((maxCust - minCust) + 1) * 1.5) + minCust);
-    } else if(i >= 11 && i < 17 ){
-      var number = Math.floor((Math.random() * ((maxCust - minCust) + 1) * 1) + minCust);
-    }
+    var number = Math.floor(Math.random() * ((maxCust - minCust) + 1) + minCust);
+
     //random number credit from https://www.codecademy.com/en/forum_questions/5198adbdbbeddf9726000700
     var cookies = Math.floor(number * average);
     array.push(cookies);
